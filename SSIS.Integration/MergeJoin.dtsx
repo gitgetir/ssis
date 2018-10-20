@@ -1,0 +1,1013 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/16/2018 4:21:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-DAABB4K"
+  DTS:CreatorName="ITETURKEY\kahramanb"
+  DTS:DTSID="{973DDA3D-C56E-4875-A6FE-4E6CABF09796}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="MergeJoin"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{C03DF5B2-856F-49C4-AD7E-34C3B92F311A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.SSIS.Data.Target]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E3A42261-68A5-4C4C-A763-F33286A4B455}"
+      DTS:ObjectName="localhost.SSIS.Data.Target">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=SSIS.Data.Target;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Merge Product &amp; Order"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F9EEF97F-1CB8-4CE7-A46C-08BF3452E9C4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Merge Product &amp; Order"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Merge Product &amp; Order\DST - Order"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - Order"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Order]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Merge Product &amp; Order\DST - Order.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.SSIS.Data.Target]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.SSIS.Data.Target]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].Columns[OrderId]"
+                      cachedDataType="i4"
+                      cachedName="OrderId"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[OrderId]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[OrderId]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].Columns[ProductId]"
+                      cachedDataType="i4"
+                      cachedName="ProductId"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[ProductId]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].Columns[Cost]"
+                      cachedDataType="numeric"
+                      cachedName="Cost"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[Cost]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].Columns[CreationTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreationTime"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[OrderTime]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[CreationTime]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[OrderId]"
+                      dataType="i4"
+                      name="OrderId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[ProductId]"
+                      dataType="i4"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[CustomerFullName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="CustomerFullName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[CustomerEmail]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="CustomerEmail" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[Cost]"
+                      dataType="numeric"
+                      name="Cost"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input].ExternalColumns[OrderTime]"
+                      dataType="dbTimeStamp"
+                      name="OrderTime" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Merge Product &amp; Order\DST - Order.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\DST - Order.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\DST - Order.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\DST - Order.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Merge Product &amp; Order\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Left Input].Columns[ProductId]"
+                      cachedDataType="i4"
+                      cachedName="ProductId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].Columns[ProductId]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Left Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Name"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[ProductId]"
+                      cachedDataType="i4"
+                      cachedName="ProductId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[ProductId]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[OrderId]"
+                      cachedDataType="i4"
+                      cachedName="OrderId"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[OrderId]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[CustomerId]"
+                      cachedDataType="i4"
+                      cachedName="CustomerId"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[CustomerId]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[Cost]"
+                      cachedDataType="numeric"
+                      cachedName="Cost"
+                      cachedPrecision="18"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[Cost]" />
+                    <inputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[CreationTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreationTime"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[CreationTime]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[OrderId]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[OrderId]"
+                      name="OrderId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[OrderId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[ProductId]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[ProductId]"
+                      name="ProductId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[ProductId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[Name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[Name]"
+                      name="Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Left Input].Columns[Name]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[Quantity]"
+                      name="Quantity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[Quantity]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[CustomerId]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[CustomerId]"
+                      name="CustomerId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[CustomerId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[Cost]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[Cost]"
+                      name="Cost"
+                      precision="18">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[Cost]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[CreationTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output].Columns[CreationTime]"
+                      name="CreationTime">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input].Columns[CreationTime]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Merge Product &amp; Order\SRC - Order"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Order"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Order]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT *
+FROM [dbo].[Order]
+ORDER BY ProductId</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Connections[OleDbConnection]"
+                  connectionManagerID="{B8479CE3-2223-406A-B651-DE4BC413924E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.SSIS.Data.Source]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output]"
+                  isSorted="true"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[OrderId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[OrderId]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[OrderId]"
+                      name="OrderId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      name="ProductId"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                      name="CustomerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[Cost]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[Cost]"
+                      name="Cost"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[CreationTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[CreationTime]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].Columns[CreationTime]"
+                      name="CreationTime"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[OrderId]"
+                      dataType="i4"
+                      name="OrderId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      dataType="i4"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                      dataType="i4"
+                      name="CustomerId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[Cost]"
+                      dataType="numeric"
+                      name="Cost"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output].ExternalColumns[CreationTime]"
+                      dataType="dbTimeStamp"
+                      name="CreationTime" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[OrderId]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[OrderId]"
+                      name="OrderId" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      name="ProductId" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                      name="CustomerId" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[Cost]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[Cost]"
+                      name="Cost"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[CreationTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[CreationTime]"
+                      name="CreationTime" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Merge Product &amp; Order\SRC - Product"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Product"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT *
+FROM [dbo].[Product]
+ORDER BY ProductId</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Connections[OleDbConnection]"
+                  connectionManagerID="{B8479CE3-2223-406A-B651-DE4BC413924E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.SSIS.Data.Source]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output]"
+                  isSorted="true"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].Columns[ProductId]"
+                      name="ProductId"
+                      sortKeyPosition="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="100"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].Columns[CategoryId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].ExternalColumns[CategoryId]"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].Columns[CategoryId]"
+                      name="CategoryId"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].ExternalColumns[ProductId]"
+                      dataType="i4"
+                      name="ProductId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output].ExternalColumns[CategoryId]"
+                      dataType="i4"
+                      name="CategoryId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[ProductId]"
+                      name="ProductId" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[CategoryId]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[CategoryId]"
+                      name="CategoryId" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Merge Product &amp; Order.Paths[Merge Join Output]"
+              endId="Package\DFT - Merge Product &amp; Order\DST - Order.Inputs[OLE DB Destination Input]"
+              name="Merge Join Output"
+              startId="Package\DFT - Merge Product &amp; Order\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\DFT - Merge Product &amp; Order.Paths[OLE DB Source Output1]"
+              endId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Right Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Merge Product &amp; Order\SRC - Order.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT - Merge Product &amp; Order.Paths[OLE DB Source Output]"
+              endId="Package\DFT - Merge Product &amp; Order\Merge Join.Inputs[Merge Join Left Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Merge Product &amp; Order\SRC - Product.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate Tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{72E0E80A-B76F-4480-A350-A805ABA71EDC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate Tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E3A42261-68A5-4C4C-A763-F33286A4B455}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[Order]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BE381F82-5547-4B24-8FF2-4713BE7226A5}"
+      DTS:From="Package\SQL - Truncate Tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT - Merge Product &amp; Order" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\DFT - Merge Product &amp; Order"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\SQL - Truncate Tables"
+          TopLeft="22,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="117,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - Merge Product &amp; Order">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\DFT - Merge Product &amp; Order\SRC - Product"
+          TopLeft="5.50000000000003,5.5" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\DFT - Merge Product &amp; Order\SRC - Order"
+          TopLeft="216.5,5.5" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\DFT - Merge Product &amp; Order\Merge Join"
+          TopLeft="220,107.5" />
+        <EdgeLayout
+          Id="Package\DFT - Merge Product &amp; Order.Paths[OLE DB Source Output]"
+          TopLeft="80.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="185.166666666667,60"
+              Start="0,0"
+              End="185.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5720653789004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5720653789004"
+                    Point2="0,35.5720653789004"
+                    Point3="4,35.5720653789004" />
+                  <mssgle:LineSegment
+                    End="181.166666666667,35.5720653789004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="181.166666666667,35.5720653789004"
+                    Point2="185.166666666667,35.5720653789004"
+                    Point3="185.166666666667,39.5720653789004" />
+                  <mssgle:LineSegment
+                    End="185.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Merge Product &amp; Order.Paths[OLE DB Source Output1]"
+          TopLeft="286.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.8333333333334,60"
+              Start="0,0"
+              End="20.8333333333334,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5720653789004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5720653789004"
+                    Point2="0,35.5720653789004"
+                    Point3="4,35.5720653789004" />
+                  <mssgle:LineSegment
+                    End="16.8333333333334,35.5720653789004" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.8333333333334,35.5720653789004"
+                    Point2="20.8333333333334,35.5720653789004"
+                    Point3="20.8333333333334,39.5720653789004" />
+                  <mssgle:LineSegment
+                    End="20.8333333333334,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="139,42"
+          Id="Package\DFT - Merge Product &amp; Order\DST - Order"
+          TopLeft="217,209.5" />
+        <EdgeLayout
+          Id="Package\DFT - Merge Product &amp; Order.Paths[Merge Join Output]"
+          TopLeft="286.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Merge Product &amp; Order\SRC - Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Merge Product &amp; Order\SRC - Order">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Merge Product &amp; Order\DST - Order">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
